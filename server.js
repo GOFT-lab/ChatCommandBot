@@ -5,7 +5,7 @@ const moobotRoutes = require('./routes/moobotRoutes');
 
 const app = express();
 
-// Отримуємо змінні середовища з .env
+// Отримуємо змінні середовища з .env або через Vercel Environment Variables
 const PORT = process.env.PORT || 3000;
 const ROOT_LINK = process.env.ROOT_LINK || 'http://localhost';
 
@@ -15,7 +15,5 @@ app.use(bodyParser.json());
 // Підключаємо роут для Moobot
 app.use('/moobot', moobotRoutes);
 
-// Запускаємо сервер
-app.listen(PORT, () => {
-  console.log(`Сервер працює на ${ROOT_LINK}:${PORT}`);
-});
+// Для Vercel необхідно використовувати експорт сервера замість прослуховування порту
+module.exports = app;

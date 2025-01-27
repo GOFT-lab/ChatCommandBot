@@ -3,6 +3,6 @@ const ageHandler = require('../commands/ageCommand');
 
 const router = express.Router();
 
-router.post('/moobot/age', ageHandler);
+router.get('/moobot/age', ageHandler);
 
 module.exports = router;
