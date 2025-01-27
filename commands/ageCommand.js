@@ -10,7 +10,7 @@ const getMessageByAge = (age) => {
 const ageHandler = (req, res) => {
   const age = generateRandomAge();
   const message = getMessageByAge(age);
-  const fullMessage = `Тобі ${age}. ${message}`;
+  const fullMessage = `тобі ${age}. ${message}`;
 
   res.json({ fullMessage });
 };
