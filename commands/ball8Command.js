@@ -18,6 +18,7 @@ const getFortuneAnswer = () => {
 
 const ball8Handler = (req, res) => {
   const question = req.query.question;
+  console.log(question);
 
   if (!question) {
     return res.json({
