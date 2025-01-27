@@ -7,19 +7,12 @@ const getMessageByAge = (age) => {
   return 'Старість — не перешкода для стрімів!';
 };
 
-const ageHandler = async (req, res) => {
-  try {
-    const [age, message] = await Promise.all([
-      generateRandomAgeAsync(),
-      getMessageByAgeAsync(),
-    ]);
+const ageHandler = (req, res) => {
+  const age = generateRandomAge();
+  const message = getMessageByAge(age);
+  const fullMessage = `тобі ${age}. ${message}`;
 
-    const fullMessage = `тобі ${age}. ${message}`;
-
-    res.json({ fullMessage });
-  } catch (error) {
-    res.status(500).json({ error: 'Щось пішло не так!' });
-  }
+  res.json({ fullMessage });
 };
 
 module.exports = ageHandler;
