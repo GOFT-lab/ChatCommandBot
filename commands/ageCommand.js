@@ -7,12 +7,17 @@ const getMessageByAge = (age) => {
   return 'Старість — не перешкода для стрімів!';
 };
 
-const ageHandler = (req, res) => {
-  const age = generateRandomAge();
-  const message = getMessageByAge(age);
-  const fullMessage = `тобі ${age}. ${message}`;
+const ageHandler = async (req, res) => {
+  try {
+    const age = generateRandomAge();
+    const message = getMessageByAge(age);
 
-  res.json({ fullMessage });
+    const fullMessage = `Тобі ${age}. ${message}`;
+    res.json({ fullMessage });
+  } catch (error) {
+    console.error('Error in ageHandler:', error);
+    res.status(500).json({ error: 'Сталася помилка при обробці запиту' });
+  }
 };
 
 module.exports = ageHandler;
