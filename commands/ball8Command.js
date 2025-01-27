@@ -17,7 +17,14 @@ const getFortuneAnswer = () => {
 };
 
 const ball8Handler = (req, res) => {
-  const question = req.query.question || 'Ти запитав щось?';
+  const question = req.query.question;
+
+  if (!question) {
+    return res.json({
+      message: 'Без питання не бути ворожбі!',
+    });
+  }
+
   const answer = getFortuneAnswer();
 
   res.json({
