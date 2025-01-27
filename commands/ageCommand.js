@@ -12,7 +12,7 @@ const ageHandler = async (req, res) => {
     const age = generateRandomAge();
     const message = getMessageByAge(age);
 
-    const fullMessage = `Тобі ${age}. ${message}`;
+    const fullMessage = `тобі ${age}. ${message}`;
     res.json({ fullMessage });
   } catch (error) {
     console.error('Error in ageHandler:', error);
